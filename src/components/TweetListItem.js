@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./TweetListItem.css";
+// import "./TweetListItem.css";
 
 const TweetListItem = (props) => {
-  const { id, type, text, id_user } = props;
+  const { id, text } = props;
 
   return (
     <div className="tweet-list-item">

@@ -2,9 +2,9 @@ import React from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 import TweetList from "../components/TweetList";
-import SingleTweet from "../components/SingleTweet";
+import UserSingleTweet from "../components/UserSingleTweet";
 
-import "./TweetsPage.css";
+// import "./TweetsPage.css";
 
 const TweetsPage = () => {
   let match = useRouteMatch();
@@ -15,7 +15,7 @@ const TweetsPage = () => {
 
       <Switch>
         <Route path={`${match.url}/:tweetId`}>
-          <SingleTweet />
+          <UserSingleTweet />
         </Route>
 
         <Route path={match.url}>

@@ -1,15 +1,15 @@
 import React from "react";
 
-import TweetListItem from "./TweetListItem";
+import UserSingleTweetDisplay from "./UserSingleTweetDisplay";
 
-class TweetList extends React.Component {
+export default class UserSingleTweetFetcher extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      status: "IDLE", // STARTED, SUCCESS, FAILED
+      status: "IDLE", // STARTED, SUCCESS, FAILED,
       errorMessage: null,
-      tweets: [],
+      tweets: null,
     };
   }
 
@@ -20,7 +20,7 @@ class TweetList extends React.Component {
       <div>
         {status === "IDLE" && (
           <div>
-            Component has been mounted and will start fetching in a moment
+            Component has being mount and will start fetching in a moment
           </div>
         )}
 
@@ -28,21 +28,17 @@ class TweetList extends React.Component {
 
         {status === "SUCCESS" && (
           <div>
-            {tweets.map((fact) => {
-              return (
-                <TweetListItem
-                  key={fact._id}
-                  id={fact._id}
-                  text={fact.text}
-                  user={fact.user}
-                />
-              );
-            })}
+            <UserSingleTweetDisplay
+              id={tweets._id}
+              //   user={fact.user}
+              text={tweets.text}
+              date={tweets.date}
+            />
           </div>
         )}
 
         {status === "FAILED" && (
-          <div style={{ backgroundColor: "red" }}>Fetching tweets failed</div>
+          <div style={{ backgroundColor: "red" }}>Fetching Tweet failed</div>
         )}
       </div>
     );
@@ -55,13 +51,15 @@ class TweetList extends React.Component {
         errorMessage: null,
       },
       () => {
-        fetch("https://twitterbackendd.herokuapp.com/messages/")
+        fetch(
+          `https://twitterbackendd.herokuapp.com/messages/${this.props.factId}`
+        )
           .then((response) => {
             return response.json();
           })
-          .then((TweetList) => {
+          .then((tweet) => {
             this.setState({
-              tweets: TweetList.all,
+              tweets: tweet,
               status: "SUCCESS",
             });
           })
@@ -75,5 +73,3 @@ class TweetList extends React.Component {
     );
   }
 }
-
-export default TweetList;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import MessagesPage from "../pages/Messages";
-import NotificationsPage from "../pages/Notifications";
+import MessagesPage from "../pages/MessagesPage";
+import NotificationsPage from "../pages/NotificationsPage";
 import HomePage from "../pages/TweetsPage";
 import ProfilePage from "../pages/ProfilePage";
 import AboutPage from "../pages/AboutPage";

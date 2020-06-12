@@ -1,0 +1,19 @@
+.left-side-menu{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    text-align: left;
+    width:30%;
+    
+
+}
+.left-side-menu a{
+    padding: 30px;
+    
+}
+
+
+.left-side-menu a:hover{
+    color: #2fc4b2;
+
+}

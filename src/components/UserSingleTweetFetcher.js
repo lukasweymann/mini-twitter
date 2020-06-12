@@ -29,7 +29,7 @@ export default class UserSingleTweetFetcher extends React.Component {
         {status === "SUCCESS" && (
           <div>
             <UserSingleTweetDisplay
-              id={tweets._id}
+              id={tweets.id}
               //   user={fact.user}
               text={tweets.text}
               date={tweets.date}
@@ -52,7 +52,7 @@ export default class UserSingleTweetFetcher extends React.Component {
       },
       () => {
         fetch(
-          `https://twitterbackendd.herokuapp.com/messages/${this.props.factId}`
+          `https://cors-anywhere.herokuapp.com/https://twitterbackendd.herokuapp.com/messages/${this.props.userTweetId}`
         )
           .then((response) => {
             return response.json();

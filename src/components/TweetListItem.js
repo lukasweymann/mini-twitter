@@ -8,18 +8,11 @@ const TweetListItem = (props) => {
 
   return (
     <div className="tweet-list-item">
-      {/* <div>id: {id}</div>
-            <div>type: {type}</div>
-            <div>user: {JSON.stringify(user)}</div>
-            <div>upvotes: {upvotes}</div>
-
-            <br />
-            <br /> */}
       <b>{text}</b>
 
       <br />
       <br />
-      <Link to={`/tweets/${id}`}>Tweet</Link>
+      <Link to={`/ /${id}`}>Tweet</Link>
     </div>
   );
 };

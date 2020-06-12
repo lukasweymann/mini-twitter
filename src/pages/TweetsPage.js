@@ -10,11 +10,11 @@ const TweetsPage = () => {
   let match = useRouteMatch();
 
   return (
-    <div className="cat-facts-page">
+    <div className="tweets-page">
       <h1>Tweets</h1>
 
       <Switch>
-        <Route path={`${match.url}/:tweetId`}>
+        <Route path={`${match.url}/:userTweetId`}>
           <UserSingleTweet />
         </Route>
 

@@ -19,17 +19,21 @@ function LoginPage({ setAuth }) {
     setPassword(event.target.value);
   }
   const userAuthentication = (e) => {
+    console.log("helloc");
     e.preventDefault();
-    fetch("https://twitterbackendd.herokuapp.com/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
+    fetch(
+      "https://cors-anywhere.herokuapp.com/https://twitterbackendd.herokuapp.com/users/login/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: username,
+          password: password,
+        }),
+      }
+    )
       .then((response) => {
         if (response.status === 200) {
           response
@@ -55,7 +59,7 @@ function LoginPage({ setAuth }) {
       <h4 onClick={handleInputs}>Sign In</h4>
 
       {input && (
-        <form className="form" method="post">
+        <form onSubmit={userAuthentication} className="form">
           <input
             onChange={handleUsername}
             name="username"
@@ -75,9 +79,7 @@ function LoginPage({ setAuth }) {
             placeholder="Confirm Password"
           />
 
-          <button onSubmit={userAuthentication} type="submit">
-            {isLogin ? "Login" : "Register"}
-          </button>
+          <button type="submit">{isLogin ? "Login" : "Register"}</button>
         </form>
       )}
     </div>

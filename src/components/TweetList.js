@@ -14,7 +14,7 @@ class TweetList extends React.Component {
   }
 
   render() {
-    const { status, catFacts } = this.state;
+    const { status, tweets } = this.state;
 
     return (
       <div>
@@ -33,10 +33,8 @@ class TweetList extends React.Component {
                 <TweetListItem
                   key={fact._id}
                   id={fact._id}
-                  type={fact.type}
                   text={fact.text}
                   user={fact.user}
-                  upvotes={fact.upvotes}
                 />
               );
             })}
@@ -44,9 +42,7 @@ class TweetList extends React.Component {
         )}
 
         {status === "FAILED" && (
-          <div style={{ backgroundColor: "red" }}>
-            Fetching tweets failed
-          </div>
+          <div style={{ backgroundColor: "red" }}>Fetching tweets failed</div>
         )}
       </div>
     );
@@ -59,7 +55,7 @@ class TweetList extends React.Component {
         errorMessage: null,
       },
       () => {
-        fetch("https://cat-fact.herokuapp.com/facts")
+        fetch("https://twitterbackendd.herokuapp.com/messages/")
           .then((response) => {
             return response.json();
           })

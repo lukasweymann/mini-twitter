@@ -1,32 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import TweetListItem from "./TweetListItem";
 
-class TweetList extends React.Component {
-  constructor(props) {
-    super(props);
+const TweetList = () => {
 
-    this.state = {
-      status: "IDLE", // STARTED, SUCCESS, FAILED
-      errorMessage: null,
-      tweets: [],
-    };
-  }
+  const [status, setStatus] = useState("IDLE");
+  const [error, setError] = useState(null);
+  const [tweets, setTweets] = useState([]);
 
-  render() {
-    const { status, tweets } = this.state;
+  useEffect(() => {
 
-    return (
-      <div>
-        {status === "IDLE" && (
-          <div>
-            Component has been mounted and will start fetching in a moment
-          </div>
-        )}
+    setStatus("STARTED");
+    try {
+      (async function () {
+        const fet = await fetch("https://cors-anywhere.herokuapp.com/https://twitterbackendd.herokuapp.com/messages/");
+        const res = await fet.json();
+        setStatus("SUCCESS")
+        setTweets(res)
+      })();
+    } catch (err) {
+      setError(err)
+    }
+  }, [])
 
-        {status === "STARTED" && <div>Loading...</div>}
 
-        {status === "SUCCESS" && (
+  return (
+    <div>
+      {status === "IDLE" && (
+        <div>
+          Component has been mounted and will start fetching in a moment
+        </div>
+      )}
+
+      {status === "STARTED" && <div>Loading...</div>}
+
+      {
+        status === "SUCCESS" && (
           <div>
             {tweets.map((fact) => {
               return (
@@ -39,43 +48,18 @@ class TweetList extends React.Component {
               );
             })}
           </div>
-        )}
-
-        {status === "FAILED" && (
-          <div style={{ backgroundColor: "red" }}>Fetching tweets failed</div>
-        )}
-      </div>
-    );
-  }
-
-  componentDidMount() {
-    this.setState(
-      {
-        status: "STARTED",
-        errorMessage: null,
-      },
-      () => {
-        fetch(
-          "https://cors-anywhere.herokuapp.com/https://twitterbackendd.herokuapp.com/messages/"
         )
-          .then((response) => {
-            return response.json();
-          })
-          .then((TweetList) => {
-            this.setState({
-              tweets: TweetList.all,
-              status: "SUCCESS",
-            });
-          })
-          .catch((error) => {
-            this.setState({
-              status: "FAILED",
-              errorMessage: error.message,
-            });
-          });
       }
-    );
-  }
+
+      {
+        status === "FAILED" && (
+          <div style={{ backgroundColor: "red" }}>Fetching tweets failed</div>
+        )
+      }
+    </div >
+  );
 }
 
+
 export default TweetList;
+

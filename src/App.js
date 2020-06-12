@@ -1,13 +1,14 @@
-import React from 'react';
+import React  from "react";
 
-import './App.css';
-import SideMenu from './components/SideMenu';
-
+import "./App.css";
+import SideMenu from "./components/SideMenu";
+import LoginPage from "./LoginPage";
 
 function App() {
+ 
   return (
     <div className="App">
-     <SideMenu />
+      <App/>
     </div>
   );
 }

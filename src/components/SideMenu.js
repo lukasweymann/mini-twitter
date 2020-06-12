@@ -20,6 +20,7 @@ class SideMenu extends React.Component{
             <a><MailOutlineOutlinedIcon style={{marginRight: "10px"}}/> Messages</a>
             <a><AccountCircleOutlinedIcon style={{marginRight: "10px"}}/> Profile</a>
             <a><HelpOutlinedIcon style={{marginRight: "10px"}}/> About</a>
+            
             </div>
         )
     }

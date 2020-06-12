@@ -5,9 +5,12 @@ import {
   Route,
   useRouteMatch
 } from 'react-router-dom';
-import UserSingleTweetFetcher from '../components/UserSingleTweetFetcher';
+
+import UserSingleTweetFetcher from './components/UserSingleTweetFetcher';
 
 function App() {
+  let match = useRouteMatch();
+
   return (
     <div className="App">
       <h1>tweets facts page</h1>

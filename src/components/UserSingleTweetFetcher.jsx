@@ -49,7 +49,7 @@ class UserSingleTweetFetcher extends React.Component {
             status: 'STARTED',
             errorMessage: null
         }, () => {
-            fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes') // This needs to be changed
+            fetch('https://twitterbackendd.herokuapp.com/messages/${this.props.userTweetId}') // This needs to be changed...
                 .then(response => {
                     return response.json();
                 })

@@ -1,21 +1,14 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
 import "./LoginPage.css";
 import HighlightIcon from "@material-ui/icons/Highlight";
 import Cookies from "js-cookie";
 
-function LoginPage() {
-  const [isLogin, setLogin] = useState(false);
+function LoginPage({ setAuth }) {
+  const [isLogin, setLogin] = useState(true);
   const [input, setInputs] = useState(false);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const [authenticated, setAuthenticated] = useState(false);
-  
- 
 
-  function handleClick() {
-    setLogin(true);
-  }
   function handleInputs() {
     setInputs(true);
   }
@@ -42,7 +35,7 @@ function LoginPage() {
           response
             .json()
             .then((response) => Cookies.set("token", response))
-            .then(setAuthenticated(true));
+            .then(setAuth);
         } else {
           console.log("forbidden");
         }
@@ -51,18 +44,16 @@ function LoginPage() {
         console.error("Error:", error);
       });
   };
-  
+
   return (
-    
     <div className="login-page">
-    {authenticated && <Redirect to="/" />}
       <h1>
         Welcome to <span>Ginger</span>{" "}
         <HighlightIcon style={{ fontSize: "1.5em" }} />
       </h1>
 
-      <h4 onClick={handleInputs}>Register</h4>
-      <h4 onClick={handleClick}>Sign In</h4>
+      <h4 onClick={handleInputs}>Sign In</h4>
+
       {input && (
         <form className="form" method="post">
           <input
@@ -77,13 +68,13 @@ function LoginPage() {
             type="password"
             placeholder="Password"
           />
-          {!isLogin && (
-            <input
-              name="password-confirmation"
-              type="password"
-              placeholder="Confirm Password"
-            />
-          )}
+
+          <input
+            name="password-confirmation"
+            type="password"
+            placeholder="Confirm Password"
+          />
+
           <button onSubmit={userAuthentication} type="submit">
             {isLogin ? "Login" : "Register"}
           </button>

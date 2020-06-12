@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-
-import SideMenu from "./components/SideMenu";
-import LoginPage from './LoginPage';
+import LoginPage from "./LoginPage";
 import Routes from "./routing/Routes";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const setAuth = () => {
+    setAuthenticated(true);
+  };
+
   return (
     <div className="App">
-      <LoginPage />
-      <Routes />
+      {!authenticated && <LoginPage setAuth={setAuth} />}
+      {authenticated && <Routes />}
     </div>
   );
 }

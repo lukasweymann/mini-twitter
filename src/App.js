@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  Switch,
+  Route,
+  useRouteMatch
+} from 'react-router-dom';
+import UserSingleTweetFetcher from '../components/UserSingleTweetFetcher';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>tweets facts page</h1>
+      <Switch>
+          <Route path={match.url} >
+            <UserSingleTweetFetcher />
+          </Route>
+      </Switch>
     </div>
   );
 }

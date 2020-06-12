@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 import "./LoginPage.css";
 import HighlightIcon from "@material-ui/icons/Highlight";
 import Cookies from "js-cookie";
@@ -9,6 +10,8 @@ function LoginPage() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  
+ 
 
   function handleClick() {
     setLogin(true);
@@ -48,9 +51,11 @@ function LoginPage() {
         console.error("Error:", error);
       });
   };
-
+  
   return (
+    
     <div className="login-page">
+    {authenticated && <Redirect to="/" />}
       <h1>
         Welcome to <span>Ginger</span>{" "}
         <HighlightIcon style={{ fontSize: "1.5em" }} />

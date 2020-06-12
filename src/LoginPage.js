@@ -8,6 +8,7 @@ function LoginPage() {
   const [input, setInputs] = useState(false);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
 
   function handleClick() {
     setLogin(true);
@@ -38,7 +39,7 @@ function LoginPage() {
           response
             .json()
             .then((response) => Cookies.set("token", response))
-            
+            .then(setAuthenticated(true));
         } else {
           console.log("forbidden");
         }

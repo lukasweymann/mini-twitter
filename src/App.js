@@ -2,12 +2,13 @@ import React from "react";
 import "./App.css";
 
 import SideMenu from "./components/SideMenu";
+import LoginPage from './LoginPage';
 import Routes from "./routing/Routes";
 
 function App() {
   return (
     <div className="App">
-      <SideMenu />
+      <LoginPage />
       <Routes />
     </div>
   );

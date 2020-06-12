@@ -55,7 +55,9 @@ class TweetList extends React.Component {
         errorMessage: null,
       },
       () => {
-        fetch("https://twitterbackendd.herokuapp.com/messages/")
+        fetch(
+          "https://cors-anywhere.herokuapp.com/https://twitterbackendd.herokuapp.com/messages/"
+        )
           .then((response) => {
             return response.json();
           })

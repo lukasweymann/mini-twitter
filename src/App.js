@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 
-import SideMenu from "./components/SideMenu";
-import LoginPage from './LoginPage';
-import Routes from "./routing/Routes";
+import LoginPage from "./LoginPage";
+
+import HomePage from "./pages/HomePage";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+
+  const setAuth = () => {
+    setAuthenticated(true);
+  };
   return (
     <div className="App">
-      <LoginPage />
-      <Routes />
+      <HomePage />
     </div>
   );
 }

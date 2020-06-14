@@ -1,0 +1,20 @@
+.tweet-list-item{
+    position: relative;
+    top: 100px;
+    border: 1.5px solid #2fc4b2;
+    padding: 20px;
+    border-radius:  5px;
+    margin: 7px;
+}
+.tweet-list-item h4{
+    text-align: left;
+    line-height: 1.5;
+    
+}
+ .tweet-list-item a{
+     text-decoration: none;
+     color: black;
+     text-align: left;
+     margin: 10px;
+     padding: 10px;
+ }

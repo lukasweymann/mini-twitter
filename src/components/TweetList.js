@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import TweetListItem from "./TweetListItem";
+import './TweetList.css'
 
 const TweetList = () => {
 
@@ -25,7 +26,7 @@ const TweetList = () => {
 
 
   return (
-    <div>
+    <div className="tweets-list">
       {status === "IDLE" && (
         <div>
           Component has been mounted and will start fetching in a moment

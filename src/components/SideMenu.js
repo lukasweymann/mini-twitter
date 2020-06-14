@@ -14,7 +14,7 @@ class SideMenu extends React.Component{
     render(){
         return(
             <div className="left-side-menu">
-            <HighlightIcon style={{color: "#2fc4b2", padding: "35px", fontSize: "3em"}}/>
+            <h1>Ginger <HighlightIcon style={{ fontSize: "1.1em" }} /></h1>
             <a><HomeOutlinedIcon style={{marginRight: "10px"}}/> Home</a>
             <a><NotificationsNoneOutlinedIcon style={{marginRight: "10px"}}/> Notifications</a>
             <a><MailOutlineOutlinedIcon style={{marginRight: "10px"}}/> Messages</a>

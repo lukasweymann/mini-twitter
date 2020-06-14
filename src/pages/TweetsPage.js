@@ -10,7 +10,7 @@ const TweetsPage = () => {
   let match = useRouteMatch();
 
   return (
-    <div className="tweets-page">
+    <div  className="tweets-page">
       <h1>Tweets</h1>
 
       <Switch>
